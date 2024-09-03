@@ -1,0 +1,76 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Google Tag Manager -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-CLEMQ3VP3T"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-CLEMQ3VP3T');
+    </script>
+
+    <!-- Meta Tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Join AWS Cloud Club Nepal for exciting cloud computing events, workshops, and community engagement. Stay updated on the latest in cloud computing.">
+    <meta name="keywords" content="aws student community day nepal, awscloudclubnepal, aws events nepal, cloud club nepal, aws workshop nepal, cloud computing">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="AWS Cloud Club Nepal">
+    <meta property="og:title" content="AWS Cloud Club Nepal - Events, Workshops, and More">
+    <meta property="og:description" content="Join AWS Cloud Club Nepal for exciting cloud computing events and workshops.">
+    <meta property="og:url" content="https://www.awscloudclubnepal.com">
+    <meta property="og:image" content="https://awscloudclubnepal.com/static/assets/logos/logoclub.png">
+    <meta property="og:locale" content="en_US">
+    
+    <!-- Canonical Tag -->
+    <link rel="canonical" href="https://www.awscloudclubnepal.com">
+
+    <!-- Stylesheets -->
+    <link href="{% static 'css/styles.css' %}" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Title -->
+    <title>{% block title %}AWS Cloud Club Nepal - Events, Workshops, and More{% endblock %}</title>
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "AWS Cloud Club Nepal",
+      "url": "https://www.awscloudclubnepal.com",
+      "logo": "https://awscloudclubnepal.com/static/assets/logos/logoclub.png",
+      "sameAs": [
+        "https://www.facebook.com/awscloudclubnepal",
+        "https://www.twitter.com/awscloudclubnepal"
+      ]
+    }
+    </script>
+</head>
+
+<body>
+    <div class="main-container">
+        <!-- Navbar -->
+        {% include 'navbar.html' %}
+
+        <!-- Content Block -->
+        {% block content %}{% endblock %}
+
+        <!-- Footer -->
+        {% include 'footer.html' %}
+    </div>
+
+    <!-- Scripts Block -->
+    {% block scripts %}{% endblock %}
+</body>
+
+</html>
+
