@@ -34,11 +34,11 @@
                 AWS
             </span>
             <h1
-                class="max-w-2xl mb-4 text-2xl font-extrabold tracking-tight leading-none md:text-2xl xl:text-5xl dark:text-white">
+                class="max-w-2xl mb-4 text-2xl font-extrabold tracking-tight leading-none md:text-2xl xl:text-5xl text-white">
                 {{grand_event.title}}
             </h1>
             <h2
-                class="mb-4 text-1xl font-normal tracking-tight leading-none text-gray-900 md:text-1xl lg:text-2xl dark:text-white">
+                class="mb-4 text-1xl font-normal tracking-tight text-white leading-none md:text-1xl lg:text-2xl ">
                 <span
                     class="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-green-500 animate-gradient-x">
                     {{grand_event.description}}
@@ -59,7 +59,7 @@
 <section class="py-16 border border-gray-100 lg:mx-15 md:mx-5">
     <div class="mx-auto max-w-screen-xl text-center lg:py-2 lg:px-12">
         <h1
-            class="mb-4 text-2xl font-extrabold tracking-tight leading-none text-gray-900 md:text-3xl lg:text-4xl dark:text-white">
+            class="mb-4 text-2xl font-extrabold tracking-tight leading-none  md:text-3xl lg:text-4xl text-white">
             {{grand_event.title}}
         </h1>
         <p class="px-5 mx-5 text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">
@@ -81,20 +81,12 @@
 
         <div class="flex flex-col mb-8 lg:mb-16 space-y-4 sm:flex-row sm:justify-center sm:space-y-0">
             <div class="sm:mx-3 sm:my-6 sm:px-2">
-                <form method="post" class="mt-2" action="{% url 'event:GrandEvent' grand_event.id %}">
-                    {% csrf_token %}
-                    {% if not request.user.is_authenticated %}
-                    <input
-                        class="bg-gray-50 border border-2 w-full text-sm rounded-lg  block w-full form-control input mx-1 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
-                        type="email" id="participant_email" name="participant_email" required>
-
-                    {% endif %}
                     <a href="https://forms.gle/g25VPzBad4W43wj98"
                         class="btn bg-purple-600 inline-flex items-center justify-center px-10 py-3 text-base font-extrabold text-center text-white rounded-lg hover:bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 mt-4"
                         id="eventAttend" type="submit">
                         Grab Your Ticket
                     </a>
-                </form>
+                
             </div>
         </div>
     </div>
@@ -108,7 +100,6 @@
         <div class="flex justify-between px-4 mx-auto max-w-screen-xl ">
             <article
                 class="mx-auto w-full  format format-sm sm:format-base lg:format-lg format-blue dark:format-invert">
-
                 {{grand_event.detail|safe}}
             </article>
         </div>
@@ -155,7 +146,7 @@
 <div class="container mx-auto px-4">
     <div class="grid grid-cols-1 gap-6 md:grid-cols-3 lg:grid-cols-4">
         {% for speaker in grand_event.guest_speakers.all %}
-        <div class="relative flex flex-col text-gray-700 bg-white shadow-md bg-clip-border rounded-xl w-full m-[24px]">
+        <div class="relative flex flex-col text-gray-700 bg-transparent shadow-md bg-clip-border rounded-xl w-full m-[24px] border border-green-200v">
             <div
                 class="relative mx-4 mt-4 overflow-hidden text-gray-700 bg-white shadow-lg bg-clip-border rounded-xl h-80">
                 <img src="{{speaker.SpeakerPhoto.url}}" alt="{{speaker.SpeakerName}}"
@@ -163,11 +154,11 @@
             </div>
             <div class="p-6 text-center">
                 <h4
-                    class="block mb-2 font-sans text-2xl antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
+                    class="block mb-2 font-sans text-2xl antialiased font-semibold leading-snug tracking-normal text-white">
                     {{speaker.SpeakerName}}
                 </h4>
                 <p
-                    class="block text-base antialiased font-medium leading-relaxed bg-clip-text bg-gradient-to-tr from-blue-gray-600 to-blue-gray-400">
+                    class="block text-white  antialiased font-medium leading-relaxed bg-clip-text bg-gradient-to-tr from-blue-gray-600 to-blue-gray-400">
                     {{speaker.SpeakerBio}}
                 </p>
             </div>
@@ -226,10 +217,10 @@
         class="col-span-1 p-7 shadow-lg rounded-lg bg-gradient-to-r from-purple-800 hover:bg-green-500 transition-colors">
         <a href="https://pmsquare.com/">
             <img class="mx-auto py-5 rounded-lg" src="{{sponser.merchant_logo.url}}" alt="{{sponser.merchant_name}}">
-            <h5 class="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-gray-100">
+            <h5 class="mb-2 text-2xl font-semibold tracking-tight text-white">
                 {{sponser.merchant_name}}</h5>
         </a>
-        <p class="mb-3 font-light text-gray-700 dark:text-gray-300 lg:mb-8 md:text-lg lg:text-xl">
+        <p class="mb-3 font-light text-gray-300  lg:mb-8 md:text-lg lg:text-xl">
             {{sponser.merchant_desc}}
         </p>
     </div>
@@ -262,13 +253,13 @@
 <div class="container mx-auto p-6">
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 justify-center">
         <!-- Card 1 -->
-        <div class="bg-white border border-gray-200 rounded-lg shadow dark:bg-transparent dark:border-gray-700">
+        <div class="border border-gray-200 rounded-lg shadow bg-transparent border-gray-700">
             <a href="https://www.facebook.com/CodeForChangeNepal">
-                <img class="rounded-t-lg" src="{% static 'assets/sponsorslogo/codeforchange.png' %}" alt="Club Logo" />
+                <img class="rounded-t-lg" src="{% static 'assets/logos/codeforchange.png' %}" alt="Club Logo" />
             </a>
             <div class="p-5">
                 <a href="#">
-                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-white ">
                         Code for Change
                     </h5>
                 </a>
@@ -277,7 +268,7 @@
                     they have been learning in their classrooms.
                 </p>
                 <a href="https://www.facebook.com/CodeForChangeNepal"
-                    class="inline-flex items-center justify-center px-10 py-3 text-base font-extrabold text-center text-white border border-gray-300 rounded-lg hover:bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 me-2 mb-2">
+                    class="inline-flex items-center justify-center px-10 py-3 text-white font-extrabold text-center border border-gray-300 rounded-lg hover:bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 me-2 mb-2">
                     Visit them
                     <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                         fill="none" viewBox="0 0 14 10">
@@ -289,9 +280,9 @@
         </div>
 
         <!-- Card 2 -->
-        <div class="bg-white border border-gray-200 rounded-lg shadow dark:bg-transparent dark:border-gray-700">
+        <div class=" border border-gray-200 rounded-lg shadow bg-transparent border-gray-700">
             <a href="https://www.facebook.com/askbuddie">
-                <img class="rounded-t-lg" src="{% static 'assets/sponsorslogo/askbuddie.png' %}" alt="Club Logo" />
+                <img class="rounded-t-lg" src="{% static 'assets/logos/askbuddie.png' %}" alt="Club Logo" />
             </a>
             <div class="p-5">
                 <a href="#">
@@ -304,7 +295,7 @@
                     problem
                 </p>
                 <a href="https://www.facebook.com/askbuddie"
-                    class="inline-flex items-center justify-center px-10 py-3 text-base font-extrabold text-center text-white border border-gray-300 rounded-lg hover:bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 me-2 mb-2">
+                    class="inline-flex items-center justify-center px-10 py-3  font-extrabold text-center text-white border border-gray-300 rounded-lg hover:bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 me-2 mb-2">
                     Visit them
                     <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                         fill="none" viewBox="0 0 14 10">
@@ -316,9 +307,9 @@
         </div>
 
         <!-- Card 3 -->
-        <div class="bg-white border border-gray-200 rounded-lg shadow dark:bg-transparent dark:border-gray-700">
+        <div class=" border border-gray-200 rounded-lg shadow bg-transparent border-gray-700">
             <a href="https://www.facebook.com/csitan">
-                <img class="rounded-t-lg" src="{% static 'assets/sponsorslogo/csitassociation.png' %}" alt="Club Logo" />
+                <img class="rounded-t-lg" src="{% static 'assets/logos/csitassociation.png' %}" alt="Club Logo" />
             </a>
             <div class="p-5">
                 <a href="#">
@@ -330,7 +321,7 @@
 
                     The CSIT Association of Nepal (CSITAN), founded in 2011 by BScCSIT students, is a non-profit organization aimed at linking faculty, students, and IT industries in Nepal</p>
                 <a href="https://www.facebook.com/csitan"
-                    class="inline-flex items-center justify-center px-10 py-3 text-base font-extrabold text-center text-white border border-gray-300 rounded-lg hover:bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 me-2 mb-2">
+                    class="inline-flex items-center justify-center px-10 py-3 font-extrabold text-center text-white border border-gray-300 rounded-lg hover:bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 me-2 mb-2">
                     Visit them
                     <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                         fill="none" viewBox="0 0 14 10">
@@ -342,9 +333,9 @@
         </div>
 
         <!-- card 4 -->
-        <div class="bg-white border border-gray-200 rounded-lg shadow dark:bg-transparent dark:border-gray-700">
+        <div class=" border border-gray-200 rounded-lg shadow bg-transparent border-gray-700">
             <a href="https://www.linkedin.com/company/itech-karnali/posts/?feedView=all">
-                <img class="rounded-t-lg" src="{% static 'assets/sponsorslogo/itechkarnali.png' %}" alt="Club Logo" />
+                <img class="rounded-t-lg" src="{% static 'assets/logos/itechkarnali.png' %}" alt="Club Logo" />
             </a>
             <div class="p-5">
                 <a href="#">
@@ -368,9 +359,9 @@
         </div>
 
         <!-- card 5 -->
-        <div class="bg-white border border-gray-200 rounded-lg shadow dark:bg-transparent dark:border-gray-700">
+        <div class=" border border-gray-200 rounded-lg shadow bg-transparent border-gray-700">
             <a href="https://www.linkedin.com/company/aws-user-group-women-in-tech-nepal/">
-                <img class="rounded-t-lg" src="{% static 'assets/sponsorslogo/womenawsusergroup.png' %}" alt="Club Logo" />
+                <img class="rounded-t-lg" src="{% static 'assets/logos/womenawsusergroup.png' %}" alt="Club Logo" />
             </a>
             <div class="p-5">
                 <a href="#">
@@ -420,7 +411,7 @@
     <div class="flex flex-col md:flex-row items-center rounded-lg shadow dark:bg-gradient-to-r from-purple-800 dark:border-gray-700">
         <img class="w-full md:w-1/3 rounded-t-lg md:rounded-none md:rounded-l-lg" src="{{team.profile_image.url}}" alt="{{team.name}}">
         <div class="p-5 flex-1">
-            <h3 class="text-xl font-bold tracking-tight text-gray-900 dark:text-white">
+            <h3 class="text-xl font-bold tracking-tight text-white ">
                 <a href="#">{{team.name}}</a>
             </h3>
             <span class="text-gray-500 dark:text-gray-400">{{team.role}}</span>
