@@ -3,63 +3,56 @@
 {% load static %}
 {% block content %}
 <!-- student Community Day -->
-<section class="border border-gray-10 my-2 lg:my-15 md:my-8">
-    <h2
-        class=" my-16  text-4xl font-bold tracking-tight leading-none text-center text-gray-900 md:text-4xl lg:text-4xl dark:text-white">
-        <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-green-500 animate-gradient-x">
-            Grand Event
-        </span>
-    </h2>
-    <div class="mx-auto max-w-screen-xl text-center lg:py-2 lg:px-12 p-4 lg:p-0">
-        {% if grand_event %}
-        <h1
-            class="mb-4 text-white text-xl font-extrabold tracking-tight leading-none md:text-xl lg:text-2xl ">
-            {{grand_event.title}}</h1>
-        <div class="px-3 ">
-            <p class="px-5 mx-5 text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">
-                {{grand_event.description}}
-            </p>
-        </div>
-
-
-        <p class="mb-8 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 xl:px-48 dark:text-gray-400"></p>
-        <div class="flex justify-center">
-            <div id="countDown"
-                class="flex gap-8 text-center text-white [&>*>h2]:text-xl [&>*>h2]:sm:text-3xl [&>*>h2]:font-bold [&>*>p]:text-sm [&>*>p]:font-semibold">
-                <div>
-                    <h2 id="day" class="text-white">{{ grand_event.startDate|date:"d" }}</h2>
-                    <p>Days</p>
-                </div>
-
-                <div>
-                    <h2 id="hour" class="text-white">{{ grand_event.startDate|date:"H" }}</h2>
-                    <p>Hours</p>
-                </div>
-                <div>
-                    <h2 id="minute" class="text-white">{{ grand_event.startDate|date:"i" }}</h2>
-                    <p>Minutes</p>
-                </div>
-                <div>
-                    <h2 id="second" class="text-white">{{ grand_event.startDate|date:"s" }}</h2>
-                    <p>Seconds</p>
-                </div>
+<section class="flex justify-center items-center border border-gray-10 my-2 lg:my-15 md:my-8">
+    <div class="w-full max-w-screen-lg ">
+        <h2 class="my-16 text-4xl font-bold tracking-tight leading-none text-center text-gray-900 md:text-4xl lg:text-4xl dark:text-white">
+            <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-green-500 animate-gradient-x">
+                Grand Event
+            </span>
+        </h2>
+        <div class="mx-auto max-w-screen-xl text-center lg:py-2 lg:px-12 p-4 lg:p-0">
+            {% if grand_event %}
+            <h1 class="mb-4 text-white text-xl font-extrabold tracking-tight leading-none md:text-xl lg:text-2xl">
+                {{grand_event.title}}</h1>
+            <div class="px-3">
+                <p class="px-5 mx-5 text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">
+                    {{grand_event.description}}
+                </p>
             </div>
-            <p id="eventToday" class='mt-2 font-bold text-4xl'></p>
+            <p class="mb-8 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 xl:px-48 dark:text-gray-400"></p>
+            <div class="flex justify-center">
+                <div id="countDown" class="flex gap-8 text-center text-white [&>*>h2]:text-xl [&>*>h2]:sm:text-3xl [&>*>h2]:font-bold [&>*>p]:text-sm [&>*>p]:font-semibold">
+                    <div>
+                        <h2 id="day" class="text-white">{{ grand_event.startDate|date:"d" }}</h2>
+                        <p>Days</p>
+                    </div>
+                    <div>
+                        <h2 id="hour" class="text-white">{{ grand_event.startDate|date:"H" }}</h2>
+                        <p>Hours</p>
+                    </div>
+                    <div>
+                        <h2 id="minute" class="text-white">{{ grand_event.startDate|date:"i" }}</h2>
+                        <p>Minutes</p>
+                    </div>
+                    <div>
+                        <h2 id="second" class="text-white">{{ grand_event.startDate|date:"s" }}</h2>
+                        <p>Seconds</p>
+                    </div>
+                </div>
+                <p id="eventToday" class='mt-2 font-bold text-4xl'></p>
+            </div>
+            <div class="flex flex-col mb-8 lg:mb-16 space-y-4 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-4">
+                <a href="{% url 'event:GrandEvent' grand_event.id %}" class="py-16 my-8 text-white bg-gradient-to-r from-orange-500 via-orange-600 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-extrabold rounded-lg px-5 py-2.5 text-center me-2 mb-2">
+                    Grab your Ticket Now</a>
+            </div>
+            {% else %}
+            <h1 class="mb-4 text-1xl font-extrabold tracking-tight leading-none text-gray-900 md:text-2 xl lg:text-3xl dark:text-white">
+                No Upcoming Events</h1>
+            {% endif %}
         </div>
-        <div class="flex flex-col mb-8 lg:mb-16 space-y-4 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-4">
-            <a href="{% url 'event:GrandEvent' grand_event.id %}"
-                class="py-16 my-8 text-white bg-gradient-to-r from-orange-500 via-orange-600 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800  font-extrabold rounded-lg px-5 py-2.5 text-center me-2 mb-2">
-                Grab your Ticket Now</a>
-        </div>
-
-        {% else %}
-        <h1
-            class="mb-4 text-1xl font-extrabold tracking-tight leading-none text-gray-900 md:text-2 xl lg:text-3xl dark:text-white">
-            No Upcoming Events</h1>
-        {% endif %}
     </div>
-
 </section>
+
 <!-- main-section -->
 <section class="lg:py-16">
     <div class="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
@@ -135,7 +128,7 @@
     </div>
     {% endfor %}
     {% else %}
-    <p class='text-2xl text-center'>No blogs available</p>
+    <p class='text-2xl text-center'>No Events available</p>
     {% endif %}
 </div>
 
@@ -144,7 +137,7 @@
 <h2
     class=" my-16  text-4xl font-bold tracking-tight leading-none text-center text-gray-900 md:text-4xl lg:text-4xl dark:text-white">
     <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-green-500 animate-gradient-x">
-        Popular Blogs
+        Blogs
     </span>
 </h2>
 
